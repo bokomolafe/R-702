@@ -1,5 +1,6 @@
 # My R Project for Advanced R Course
 
+<<<<<<< HEAD
 This project is part of the Advanced R class and aims to apply version control using Git and GitHub while analyzing the `airquality` dataset in R. The dataset includes daily air quality measurements in New York, providing insights into Ozone levels, Solar Radiation, Wind, and Temperature.
 
 ## Project Objectives
@@ -34,3 +35,23 @@ This project is part of the Advanced R class and aims to apply version control u
    - Highlights the relationship between solar radiation and ozone levels.
 
 ### Modular Functi
+=======
+This is an R project created for my Advanced R class. The purpose of this project is to learn version control using Git and GitHub.
+
+## Structure
+- **R Scripts**: Contains the R scripts for analysis.
+- **Data**: Raw and processed data used for the project.
+- **Documentation**: Includes notes and references for the project.
+
+## How to Run the Project
+1. Clone the repository from GitHub using the command:
+2. Open the R project file (`.Rproj`) in RStudio.
+3. Run the relevant scripts from the **R Scripts** folder.
+
+## Contributions
+Contributions are welcome. Please create a pull request for any changes.
+
+## License
+This project is for educational purposes only.
+
+>>>>>>> origin/master
