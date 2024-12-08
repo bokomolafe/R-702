@@ -1,0 +1,42 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+*.doc*
+*.xls*
+
+data*/
+
+# System files (for macOS and Windows)
+.DS_Store
+Thumbs.db
+
+# Cache, logs, and temporary files
+*_cache/
+*.utf8.md
+*.knit.md
+*.log
+
+# Ignore all output PDF and HTML reports (e.g., R Markdown)
+*.pdf
+*.html
+
+# Code directory for build or cache files
+code/__pycache__/
+code/*.o
+code/*.so
+code/*.dll
+code/*.exe
+
+# Python virtual environment (if relevant)
+code/venv/
+code/env/
+
+# Ignore CSV and TXT files used as temporary or raw data
+*.csv
+*.txt
+
+# Ignore sensitive configuration files (e.g., API keys)
+config.yaml
+.env
