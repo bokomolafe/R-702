@@ -1,7 +1,7 @@
 # clear workspace and check working directory
 rm(list = ls())
 getwd()
-<<<<<<< HEAD
+HEAD
 # Load the airquality dataset
 data("airquality")
 # View the first few rows of the dataset
@@ -25,13 +25,13 @@ summary(airquality_clean)
 # Calculate the correlation matrix
 cor_matrix <- cor(airquality_clean[, sapply(airquality_clean, is.numeric)])
 print(cor_matrix)
-=======
->>>>>>> origin/master
+
+origin/master
 
 # Load ggplot2 library for better visualization
 library(ggplot2)
 
-<<<<<<< HEAD
+
 # Scatter plot of Ozone vs Temperature
 ggplot(airquality_clean, aes(x = Temp, y = Ozone)) +
     geom_point() +
@@ -52,7 +52,7 @@ ggplot(airquality_clean, aes(x = as.factor(Month), y = Ozone)) +
 cat("The average Ozone level:", mean(airquality_clean$Ozone), "\n")
 cat("The correlation between Temperature and Ozone is:", cor(airquality_clean$Temp, airquality_clean$Ozone), "\n")
 
-=======
+
 # Load the built-in airquality dataset
 # This dataset contains daily air quality measurements in New York,
 # including variables like Ozone, Solar Radiation, Wind, and Temperature.
@@ -149,4 +149,36 @@ plot_solar_vs_ozone(airquality_clean)
 # This helps us understand the relationships between different variables
 cor_matrix <- cor(airquality_clean[, sapply(airquality_clean, is.numeric)])
 print(cor_matrix)
->>>>>>> origin/master
+
+
+# Perform linear regression
+ozone_temp_model <- lm(Ozone ~ Temp, data = airquality_clean)
+summary(ozone_temp_model)
+
+# Plot the regression line on a scatter plot
+ggplot(airquality_clean, aes(x = Temp, y = Ozone)) +
+    geom_point() +
+    geom_smooth(method = "lm", color = "blue") +
+    labs(title = "Linear Regression: Temperature vs Ozone",
+         x = "Temperature (°F)",
+         y = "Ozone (ppb)")
+
+# Load library for heatmap
+install.packages("reshape2")
+library(reshape2)
+library(ggplot2)
+
+# Calculate correlation matrix and melt it
+cor_matrix <- cor(airquality_clean[, sapply(airquality_clean, is.numeric)])
+cor_melt <- melt(cor_matrix)
+
+# Create heatmap
+ggplot(data = cor_melt, aes(x = Var1, y = Var2, fill = value)) +
+    geom_tile() +
+    scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1)) +
+    labs(title = "Correlation Heatmap", x = "", y = "") +
+    theme_minimal()
+
+# Save cleaned dataset as a CSV file
+write.csv(airquality_clean, "cleaned_airquality.csv", row.names = FALSE)
+
