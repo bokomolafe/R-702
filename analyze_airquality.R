@@ -1,7 +1,7 @@
 # clear workspace and check working directory
 rm(list = ls())
 getwd()
-HEAD
+
 # Load the airquality dataset
 data("airquality")
 # View the first few rows of the dataset
@@ -25,8 +25,6 @@ summary(airquality_clean)
 # Calculate the correlation matrix
 cor_matrix <- cor(airquality_clean[, sapply(airquality_clean, is.numeric)])
 print(cor_matrix)
-
-origin/master
 
 # Load ggplot2 library for better visualization
 library(ggplot2)
@@ -164,7 +162,6 @@ ggplot(airquality_clean, aes(x = Temp, y = Ozone)) +
          y = "Ozone (ppb)")
 
 # Load library for heatmap
-install.packages("reshape2")
 library(reshape2)
 library(ggplot2)
 
@@ -181,4 +178,18 @@ ggplot(data = cor_melt, aes(x = Var1, y = Var2, fill = value)) +
 
 # Save cleaned dataset as a CSV file
 write.csv(airquality_clean, "cleaned_airquality.csv", row.names = FALSE)
+
+install.packages("testthat")
+
+# test_clean_airquality.R
+library(testthat)
+
+test_that("clean_airquality removes rows with NA", {
+    data <- data.frame(A = c(1, 2, NA), B = c(3, 4, 5))
+    cleaned_data <- clean_airquality(data)
+    expect_equal(nrow(cleaned_data), 2)
+})
+
+library(testthat)
+test_dir("tests")
 
